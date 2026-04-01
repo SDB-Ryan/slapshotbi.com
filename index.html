@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slapshot BI - The Future of Human Intelligence</title>
+<meta name="description" content="Slapshot BI leverages cutting-edge biological processing to deliver next-generation Human Intelligence analytics. No GPUs required.">
+<meta property="og:title" content="Slapshot BI - The Future of Human Intelligence">
+<meta property="og:description" content="Forget Artificial Intelligence. The future is Human Intelligence. Powered by billions of years of biological R&D.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏒</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tahoma&family=Trebuchet+MS&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --xp-blue-dark: #1e4a7a;
+  --xp-blue-light: #3a6ea5;
+  --xp-gray: #ece9d8;
+  --xp-border: #d4d0c8;
+  --xp-dark-border: #808080;
+  --xp-white: #ffffff;
+  --xp-button-face: #ece9d8;
+  --xp-highlight: #316ac5;
+}
+
+body {
+  font-family: Tahoma, Verdana, 'Segoe UI', sans-serif;
+  font-size: 11px;
+  background: #3a6ea5;
+  color: #000;
+  min-height: 100vh;
+}
+
+/* === MAIN WINDOW === */
+.window {
+  max-width: 1100px;
+  margin: 20px auto;
+  border: 2px outset #d4d0c8;
+  background: var(--xp-gray);
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Title bar (dialog only) */
+.title-bar {
+  background: linear-gradient(180deg, #3a6ea5 0%, #1e4a7a 100%);
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+.title-bar span { text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+.title-buttons { display: flex; gap: 2px; }
+.title-btn {
+  width: 21px; height: 21px;
+  background: linear-gradient(180deg, #ece9d8, #c8c4b8);
+  border: 1px outset #d4d0c8;
+  font-size: 10px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: default;
+  font-weight: bold;
+  color: #000;
+}
+
+/* === CONTENT SECTIONS === */
+.content {
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #1e4a7a 0%, #3a6ea5 40%, #5a8ebf 100%);
+  color: white;
+  padding: 60px 40px;
+  text-align: center;
+  border-bottom: 3px outset #d4d0c8;
+}
+.hero h1 {
+  font-size: 42px;
+  font-family: 'Trebuchet MS', Tahoma, sans-serif;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+.hero .tagline {
+  font-size: 20px;
+  color: #c8ddf0;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.hero .sub {
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  color: #d8e8f6;
+}
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(180deg, #f0d060, #d4a020);
+  border: 2px outset #d4d0c8;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 28px;
+  cursor: pointer;
+  font-family: Tahoma, sans-serif;
+  text-decoration: none;
+  margin: 0 8px;
+}
+.cta-btn:hover {
+  background: linear-gradient(180deg, #f8e080, #e0b030);
+}
+.cta-btn.secondary {
+  background: linear-gradient(180deg, #ece9d8, #c8c4b8);
+}
+.cta-btn.secondary:hover {
+  background: linear-gradient(180deg, #f2f0e8, #d4d0c8);
+}
+
+/* Sections */
+.section {
+  padding: 40px;
+  border-bottom: 1px solid var(--xp-border);
+}
+.section:last-child { border-bottom: none; }
+.section h2 {
+  font-size: 22px;
+  color: var(--xp-blue-dark);
+  margin-bottom: 16px;
+  font-family: 'Trebuchet MS', Tahoma, sans-serif;
+  border-bottom: 2px solid var(--xp-blue-light);
+  padding-bottom: 6px;
+}
+.section h3 {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 8px;
+}
+.section p, .section li {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Features grid */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+.feature-card {
+  border: 2px inset #d4d0c8;
+  background: white;
+  padding: 16px;
+}
+.feature-card .icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.feature-card h3 {
+  color: var(--xp-blue-dark);
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.feature-card p {
+  font-size: 12px;
+  color: #444;
+}
+
+/* Benchmarks table */
+.benchmark-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 12px;
+}
+.benchmark-table th {
+  background: linear-gradient(180deg, #6a9fd8, #3a6ea5);
+  color: white;
+  padding: 6px 12px;
+  text-align: left;
+  border: 1px solid #2a5a8a;
+}
+.benchmark-table td {
+  padding: 6px 12px;
+  border: 1px solid #c0c0c0;
+  background: white;
+}
+.benchmark-table tr:nth-child(even) td {
+  background: #f0f0f0;
+}
+.benchmark-table .winner {
+  background: #e8f5e0 !important;
+  font-weight: bold;
+}
+
+/* Quotes */
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+.quote {
+  border: 2px inset #d4d0c8;
+  background: white;
+  padding: 14px;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.quote .attr {
+  font-style: normal;
+  font-weight: bold;
+  color: var(--xp-blue-dark);
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+/* Architecture diagram */
+.architecture {
+  background: white;
+  border: 2px inset #d4d0c8;
+  padding: 20px;
+  margin: 16px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre;
+  overflow-x: auto;
+  color: #333;
+}
+
+/* Pricing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.price-card {
+  border: 2px outset #d4d0c8;
+  background: white;
+  text-align: center;
+  padding: 20px 16px;
+}
+.price-card.featured {
+  border: 3px outset #3a6ea5;
+  background: linear-gradient(180deg, #e8f0f8, #ffffff);
+}
+.price-card h3 {
+  color: var(--xp-blue-dark);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.price-card .price {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--xp-blue-dark);
+  margin: 12px 0;
+}
+.price-card .price span {
+  font-size: 13px;
+  color: #666;
+  font-weight: normal;
+}
+.price-card ul {
+  list-style: none;
+  text-align: left;
+  margin: 12px 0;
+  font-size: 12px;
+}
+.price-card li {
+  padding: 4px 0;
+  border-bottom: 1px dotted #d4d0c8;
+}
+.price-card li::before {
+  content: "✓ ";
+  color: #3a6ea5;
+  font-weight: bold;
+}
+
+/* Status bar */
+.status-bar {
+  background: var(--xp-gray);
+  border-top: 2px inset #d4d0c8;
+  padding: 2px 4px;
+  display: flex;
+  font-size: 11px;
+  color: #444;
+}
+.status-panel {
+  border: 1px inset #d4d0c8;
+  padding: 1px 8px;
+  margin-right: 2px;
+}
+.status-panel:first-child { flex: 1; }
+
+/* Dialog box */
+.dialog-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.dialog-overlay.show { display: flex; }
+.dialog {
+  background: var(--xp-gray);
+  border: 2px outset #d4d0c8;
+  min-width: 400px;
+  max-width: 500px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+}
+.dialog .title-bar { font-size: 11px; padding: 3px 6px; }
+.dialog-body {
+  padding: 20px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.dialog-body p { margin-bottom: 8px; }
+.dialog-footer {
+  padding: 8px 20px 14px;
+  text-align: center;
+}
+.dialog-btn {
+  background: linear-gradient(180deg, #ece9d8, #c8c4b8);
+  border: 2px outset #d4d0c8;
+  padding: 4px 24px;
+  font-size: 11px;
+  font-family: Tahoma, sans-serif;
+  cursor: pointer;
+}
+.dialog-btn:active {
+  border-style: inset;
+}
+
+/* Scrolling ticker */
+.ticker-wrap {
+  background: linear-gradient(180deg, #1e4a7a, #0e2a4a);
+  overflow: hidden;
+  padding: 6px 0;
+  border-bottom: 2px outset #d4d0c8;
+}
+.ticker {
+  display: flex;
+  animation: ticker-scroll 30s linear infinite;
+  white-space: nowrap;
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker span {
+  color: #a0d0f0;
+  font-size: 12px;
+  padding: 0 40px;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 28px; }
+  .hero .tagline { font-size: 16px; }
+  .features, .quote-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .section { padding: 24px 16px; }
+  .hero { padding: 40px 20px; }
+  .architecture { font-size: 10px; }
+}
+
+/* Blinking cursor for extra retro */
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.blink { animation: blink 1s step-end infinite; }
+
+/* Marquee section */
+.marquee-bar {
+  background: #ffffcc;
+  border-top: 1px solid #d4d0c8;
+  border-bottom: 1px solid #d4d0c8;
+  padding: 4px 0;
+  overflow: hidden;
+}
+.marquee-content {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #800000;
+  font-weight: bold;
+}
+@keyframes marquee {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Try it button pulse */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(240,208,96,0.5); }
+  50% { box-shadow: 0 0 20px rgba(240,208,96,0.9); }
+}
+.cta-btn.primary { animation: pulse-glow 2s ease-in-out infinite; }
+
+/* Visitor counter lol */
+.visitor-counter {
+  text-align: center;
+  padding: 12px;
+  font-size: 11px;
+  color: #666;
+  border-top: 1px solid #d4d0c8;
+}
+.visitor-counter img {
+  vertical-align: middle;
+}
+.counter-digits {
+  display: inline-flex;
+  gap: 1px;
+  margin: 0 4px;
+}
+.counter-digit {
+  background: #000;
+  color: #0f0;
+  padding: 2px 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px inset #666;
+}
+</style>
+</head>
+<body>
+
+<!-- MAIN WINDOW -->
+<div class="window" id="main">
+
+  <!-- Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>📈 BREAKING: Slapshot BI closes $0 seed round at undisclosed valuation</span>
+      <span>🧠 "Human Intelligence will replace AI by 2026" — Slapshot Research Division</span>
+      <span>🏒 Slapshot OLAP Explorer now available in the MotherDuck Dive Gallery</span>
+      <span>⚡ New benchmark: Human Intelligence processes sarcasm 10,000x faster than GPT</span>
+      <span>📊 Customer count reaches unprecedented levels (>0)</span>
+      <span>🔬 Slapshot Labs achieves breakthrough: analyst successfully reads own handwriting</span>
+      <span>📈 BREAKING: Slapshot BI closes $0 seed round at undisclosed valuation</span>
+      <span>🧠 "Human Intelligence will replace AI by 2026" — Slapshot Research Division</span>
+      <span>🏒 Slapshot OLAP Explorer now available in the MotherDuck Dive Gallery</span>
+      <span>⚡ New benchmark: Human Intelligence processes sarcasm 10,000x faster than GPT</span>
+      <span>📊 Customer count reaches unprecedented levels (>0)</span>
+      <span>🔬 Slapshot Labs achieves breakthrough: analyst successfully reads own handwriting</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1>🏒 Slapshot BI</h1>
+      <div class="tagline">The Future of Human Intelligence&trade;</div>
+      <p class="sub">
+        Forget Artificial Intelligence. After billions of years of biological R&amp;D, the human brain remains the most advanced
+        general-purpose reasoning engine ever deployed. Slapshot BI is the first analytics platform built from the ground up to
+        harness this extraordinary — and criminally underutilized — technology.
+      </p>
+      <a class="cta-btn primary" href="#try">Try Slapshot OLAP Explorer</a>
+      <a class="cta-btn secondary" href="#pricing">View Pricing</a>
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="marquee-bar">
+      <div class="marquee-content">
+        ⚠️ ATTENTION: This product contains Human Intelligence. Side effects may include critical thinking, reasonable conclusions, and the occasional "aha" moment. Not suitable for environments where buzzwords are preferred over results. ⚠️
+      </div>
+    </div>
+
+    <!-- WHY HI -->
+    <div class="section" id="why">
+      <h2>Why Human Intelligence?</h2>
+      <p style="margin-bottom: 16px;">
+        The analytics industry has spent the last decade chasing artificial intelligence — pouring billions into GPU clusters,
+        transformer architectures, and prompt engineering. Meanwhile, the most powerful analytical engine ever created has been
+        sitting right there. Between your ears. Drawing a salary. Mostly going to meetings.
+      </p>
+      <p style="margin-bottom: 16px;">
+        <strong>Slapshot BI</strong> is the first platform to recognize that Human Intelligence (HI) isn't a bug — it's the ultimate feature.
+        Our proprietary Biological Processing Unit (BPU&trade;) technology leverages the full power of the human cortex to deliver
+        insights that are not just accurate, but <em>actually understood by the person looking at them</em>.
+      </p>
+      <div class="features">
+        <div class="feature-card">
+          <div class="icon">🧠</div>
+          <h3>Biological Processing Units (BPU&trade;)</h3>
+          <p>Each Slapshot deployment ships with access to a fully-trained human brain — no fine-tuning required.
+            Our BPUs have been pre-trained on approximately 20-40 years of real-world data, including context, nuance, and office politics.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">☕</div>
+          <h3>Coffee-Powered Inference</h3>
+          <p>While competing platforms require megawatts of power and water-cooled data centers, Slapshot's BPU runs on approximately
+            3 cups of coffee per day. Total power consumption: ~100 watts. Carbon neutral if you bike to work.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🤔</div>
+          <h3>Native Sarcasm Detection</h3>
+          <p>Unlike LLMs that struggle with tone, Slapshot's HI engine detects sarcasm, passive aggression, and "per my last email" energy
+            with 99.7% accuracy. Critical for enterprise Slack analytics.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📊</div>
+          <h3>OLAP Cube Technology</h3>
+          <p>Remember OLAP cubes? We do. Slapshot brings back the golden age of drag-and-drop dimensional analysis
+            with a genuine Office 2003 aesthetic. Because some things were perfect the first time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🔒</div>
+          <h3>Zero Hallucination Guarantee</h3>
+          <p>Slapshot's HI engine doesn't hallucinate.* It occasionally makes mistakes, misremembers things, and jumps to conclusions — but those
+            are features, not bugs. That's just thinking.<br>
+            <span style="font-size:10px; color:#888;">*Guarantee void if BPU has not had lunch.</span></p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🏒</div>
+          <h3>Hyperthreaded OLAP Mesh&trade;</h3>
+          <p>Our proprietary HTOM technology connects multiple BPUs in a mesh network (also known as "a meeting") to achieve
+            parallel processing of complex analytical queries. Synergy not included but available as an add-on.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BENCHMARKS -->
+    <div class="section" id="benchmarks">
+      <h2>Benchmarks: HI vs. AI</h2>
+      <p style="margin-bottom: 16px;">
+        Independent testing by the Slapshot Research Division (me, in my apartment) confirms that Human Intelligence
+        outperforms Artificial Intelligence across every metric that matters:
+      </p>
+      <table class="benchmark-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>GPT-4</th>
+            <th>Claude</th>
+            <th>Slapshot HI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sarcasm Detection</td>
+            <td>23%</td>
+            <td>41%</td>
+            <td class="winner">99.7% ✓</td>
+          </tr>
+          <tr>
+            <td>Detecting When Boss Is In A Bad Mood</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td class="winner">94% ✓</td>
+          </tr>
+          <tr>
+            <td>Understanding "Can You Just..."</td>
+            <td>12%</td>
+            <td>18%</td>
+            <td class="winner">100% ✓</td>
+          </tr>
+          <tr>
+            <td>Power Consumption</td>
+            <td>~1MW</td>
+            <td>~500kW</td>
+            <td class="winner">3 coffees ✓</td>
+          </tr>
+          <tr>
+            <td>Explaining Results to CFO</td>
+            <td>Verbose</td>
+            <td>Too polite</td>
+            <td class="winner">With hand gestures ✓</td>
+          </tr>
+          <tr>
+            <td>Knowing When Data "Looks Wrong"</td>
+            <td>No</td>
+            <td>No</td>
+            <td class="winner">Immediately ✓</td>
+          </tr>
+          <tr>
+            <td>Surviving a 4-Hour Strategy Meeting</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td class="winner">Barely ✓</td>
+          </tr>
+          <tr>
+            <td>Processing Speed (tokens/sec)</td>
+            <td class="winner">100K+ ✓</td>
+            <td class="winner">80K+ ✓</td>
+            <td>Like 4, honestly</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 10px; color: #888; margin-top: 4px;">
+        * Benchmarks conducted under controlled conditions (3 cups of coffee, ergonomic chair, lo-fi hip hop playlist).
+        Results may vary based on day of week, proximity to lunch, and whether Mercury is in retrograde.
+      </p>
+    </div>
+
+    <!-- ARCHITECTURE -->
+    <div class="section" id="architecture">
+      <h2>Architecture</h2>
+      <p style="margin-bottom: 16px;">
+        Slapshot's revolutionary Biological Processing Architecture eliminates the need for GPUs, TPUs, or any other
+        three-letter acronym that requires a cooling system:
+      </p>
+      <div class="architecture">
+┌─────────────────────────────────────────────────────────┐
+│                  SLAPSHOT BI PLATFORM                    │
+│                                                         │
+│  ┌──────────┐   ┌──────────────┐   ┌────────────────┐  │
+│  │ Data     │──▶│ OLAP Cube    │──▶│ Biological     │  │
+│  │ Source   │   │ Engine       │   │ Processing     │  │
+│  │ (SQL)    │   │ (Drag&Drop)  │   │ Unit (BPU™)    │  │
+│  └──────────┘   └──────────────┘   └───────┬────────┘  │
+│                                            │           │
+│                                            ▼           │
+│                                    ┌───────────────┐   │
+│                                    │   ☕ Coffee    │   │
+│                                    │   Interface   │   │
+│                                    │   Layer       │   │
+│                                    └───────┬───────┘   │
+│                                            │           │
+│                                            ▼           │
+│                                    ┌───────────────┐   │
+│                                    │  "I Think I   │   │
+│                                    │   See The     │   │
+│                                    │   Pattern"    │   │
+│                                    │   Module      │   │
+│                                    └───────┬───────┘   │
+│                                            │           │
+│                                            ▼           │
+│                                    ┌───────────────┐   │
+│                                    │   Insight     │   │
+│                                    │   Output      │   │
+│                                    │   (Slack msg) │   │
+│                                    └───────────────┘   │
+│                                                         │
+│  Powered by Hyperthreaded OLAP Mesh Technology™         │
+└─────────────────────────────────────────────────────────┘</div>
+    </div>
+
+    <!-- TRY IT -->
+    <div class="section" id="try" style="background: linear-gradient(180deg, #e8f0f8, #f8f8f8);">
+      <h2>Try Slapshot OLAP Explorer</h2>
+      <p style="margin-bottom: 16px;">
+        Experience the power of Human Intelligence firsthand. Our flagship OLAP Explorer is available now as a
+        <strong>MotherDuck Dive</strong> — a fully interactive analytical application powered by 3.2 million NYC taxi records
+        and genuine Office 2003 nostalgia.
+      </p>
+      <p style="margin-bottom: 8px; font-size: 12px;">
+        Drag dimensions. Slice cubes. Feel the raw power of a crosstab. It's like PowerPlay never left.
+      </p>
+      <div style="text-align: center; margin: 24px 0;">
+        <div style="border: 2px inset #d4d0c8; background: white; padding: 20px; display: inline-block; max-width: 500px;">
+          <p style="font-size: 14px; font-weight: bold; color: var(--xp-blue-dark); margin-bottom: 8px;">
+            🏒 Slapshot OLAP Explorer v1.0.3
+          </p>
+          <p style="font-size: 12px; color: #666; margin-bottom: 16px;">
+            Available now in the MotherDuck Dive Gallery
+          </p>
+          <p style="font-size: 11px; color: #888; margin-bottom: 12px;">
+            Features: Drag-and-drop OLAP | Live SQL | 5 Measures | Bar/Line/Pie Charts<br>
+            Data: NYC Taxi Dataset (Nov 2022) | 3,252,717 facts
+          </p>
+          <a class="cta-btn primary" href="https://app.motherduck.com/dive/gallery" target="_blank" rel="noopener">
+            Launch in MotherDuck →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="section" id="testimonials">
+      <h2>What People Are Saying*</h2>
+      <div class="quote-grid">
+        <div class="quote">
+          "I replaced our entire Databricks deployment with one analyst and a copy of Slapshot. We saved $4.2M annually.
+          The analyst is tired but grateful."
+          <div class="attr">— VP of Data, Fortune 500 (name withheld because they don't exist)</div>
+        </div>
+        <div class="quote">
+          "Slapshot's OLAP cube brought me back to 2003. I cried. Then I dragged 'Borough' to the row axis and felt alive again."
+          <div class="attr">— A Real Person Who Remembers Cognos</div>
+        </div>
+        <div class="quote">
+          "The Human Intelligence engine understood my requirements on the first try. No prompt engineering needed.
+          I just... talked to it. Like a person."
+          <div class="attr">— Product Manager, Stealth Startup</div>
+        </div>
+        <div class="quote">
+          "Finally, a BI tool that crashes when it's tired, gets confused by timezones, and takes lunch breaks.
+          Just like the rest of my team."
+          <div class="attr">— Engineering Manager, Somewhere</div>
+        </div>
+      </div>
+      <p style="font-size: 10px; color: #888; margin-top: 12px;">
+        * All testimonials are fictional. Any resemblance to real opinions is coincidental and, frankly, concerning.
+      </p>
+    </div>
+
+    <!-- PRICING -->
+    <div class="section" id="pricing" style="background: linear-gradient(180deg, #f0f0f0, #e8e8e8);">
+      <h2>Pricing</h2>
+      <p style="margin-bottom: 8px;">Simple, transparent pricing. No hidden fees. No tokens. No GPU surcharges.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Individual</h3>
+          <div class="price">Free<span></span></div>
+          <p style="font-size: 11px; color: #666; margin-bottom: 12px;">You already have a brain</p>
+          <ul>
+            <li>1 Biological Processing Unit</li>
+            <li>Unlimited coffee interface</li>
+            <li>Basic sarcasm detection</li>
+            <li>OLAP Explorer access</li>
+            <li>Community support (ask a friend)</li>
+          </ul>
+          <div style="margin-top: 12px;">
+            <a class="cta-btn secondary" href="#try">Get Started</a>
+          </div>
+        </div>
+        <div class="price-card featured">
+          <h3>Team</h3>
+          <div class="price">$0<span>/mo</span></div>
+          <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Also free, obviously</p>
+          <ul>
+            <li>Up to 10 BPUs (a "team")</li>
+            <li>Hyperthreaded OLAP Mesh&trade;</li>
+            <li>Advanced sarcasm detection</li>
+            <li>Meeting-based parallel processing</li>
+            <li>"Looks Wrong" data validation</li>
+            <li>Slack integration (you type in Slack)</li>
+          </ul>
+          <div style="margin-top: 12px;">
+            <a class="cta-btn primary" href="#try">Most Popular</a>
+          </div>
+        </div>
+        <div class="price-card">
+          <h3>Enterprise</h3>
+          <div class="price">$0<span>/mo</span></div>
+          <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Still free. We have no revenue model.</p>
+          <ul>
+            <li>Unlimited BPUs</li>
+            <li>SSO (Single Sign-On to the Office)</li>
+            <li>SOC 2 compliant (the humans are)</li>
+            <li>Dedicated account manager (Dave)</li>
+            <li>On-premise deployment (they come to your office)</li>
+            <li>24/7 support (Dave sleeps sometimes)</li>
+          </ul>
+          <div style="margin-top: 12px;">
+            <a class="cta-btn secondary" href="#try">Contact Sales (Dave)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div style="margin-top: 16px;">
+        <h3>Q: Is this real?</h3>
+        <p style="margin-bottom: 16px;">A: The OLAP Explorer is absolutely real. You can use it right now. The company? Check the date.</p>
+
+        <h3>Q: Do I actually need this?</h3>
+        <p style="margin-bottom: 16px;">A: You already have the core technology (a brain). Slapshot just gives it a retro UI to work with.</p>
+
+        <h3>Q: What about AI?</h3>
+        <p style="margin-bottom: 16px;">A: AI is great. We love AI. Some of our best friends are AI. But have you tried just... thinking about your data? With your eyes? Revolutionary.</p>
+
+        <h3>Q: Why does it look like Windows XP?</h3>
+        <p style="margin-bottom: 16px;">A: Because the peak of UI design was reached in 2003 and we've been in decline ever since. Flat design is a psyop.</p>
+
+        <h3>Q: Can I invest?</h3>
+        <p style="margin-bottom: 16px;">A: We are not accepting investment at this time. Or any time. We have no business model and no plans to develop one.</p>
+
+        <h3>Q: Who made this?</h3>
+        <p style="margin-bottom: 16px;">A: Ryan Dolley, who should probably be doing real work right now.</p>
+      </div>
+    </div>
+
+    <!-- VISITOR COUNTER -->
+    <div class="visitor-counter">
+      You are visitor number
+      <span class="counter-digits">
+        <span class="counter-digit">0</span>
+        <span class="counter-digit">0</span>
+        <span class="counter-digit">0</span>
+        <span class="counter-digit">0</span>
+        <span class="counter-digit" id="visitor-count">1</span>
+      </span>
+      &nbsp;| Best viewed in Internet Explorer 6.0 at 1024x768
+      &nbsp;| <a href="https://www.linkedin.com/in/ryandolley" target="_blank" style="color: #3a6ea5;">Made by Ryan Dolley</a>
+      &nbsp;| <span style="cursor: pointer; color: #3a6ea5; text-decoration: underline;" onclick="document.getElementById('aboutDialog').classList.add('show')">About</span>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div class="status-panel">Ready | Human Intelligence Engine: Online</div>
+    <div class="status-panel">BPU: Active</div>
+    <div class="status-panel">Build 2003.04.01</div>
+  </div>
+
+</div><!-- /window -->
+
+<!-- ABOUT DIALOG -->
+<div class="dialog-overlay" id="aboutDialog" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="dialog">
+    <div class="title-bar">
+      <span>About Slapshot BI</span>
+      <div class="title-buttons">
+        <div class="title-btn" onclick="document.getElementById('aboutDialog').classList.remove('show')">✕</div>
+      </div>
+    </div>
+    <div class="dialog-body">
+      <p style="text-align:center; font-size: 20px; margin-bottom: 4px;">🏒</p>
+      <p style="text-align:center; font-weight:bold; font-size: 14px;">Slapshot BI</p>
+      <p style="text-align:center; color: #666;">Version 1.0.3 (Build 2003.04.01)</p>
+      <p style="text-align:center; color: #888; font-size: 11px; margin-bottom: 12px;">
+        Powered by Hyperthreaded OLAP Mesh Technology&trade;
+      </p>
+      <hr style="border: 1px inset #d4d0c8; margin-bottom: 12px;">
+      <p>Slapshot Analytics, a division of Ryan Dolley Consulting.</p>
+      <p>An April Fools' production. The OLAP Explorer is real, though.</p>
+      <p>&nbsp;</p>
+      <p><strong>Created by:</strong> Ryan Dolley</p>
+      <p>
+        LinkedIn: linkedin.com/in/ryandolley<br>
+        Super Data Brothers: youtube.com/@SuperDataBrothers
+      </p>
+      <p>&nbsp;</p>
+      <p style="font-size: 10px; color: #888;">
+        &copy; 2003-2026 Slapshot Analytics. All rights reserved.<br>
+        No artificial intelligences were harmed in the making of this product.<br>
+        Human Intelligence is a registered trademark of evolution.
+      </p>
+    </div>
+    <div class="dialog-footer">
+      <button class="dialog-btn" onclick="document.getElementById('aboutDialog').classList.remove('show')">OK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Random visitor count
+(function() {
+  var n = Math.floor(Math.random() * 8) + 1;
+  document.getElementById('visitor-count').textContent = n;
+})();
+</script>
+
+</body>
+</html>
